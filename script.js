@@ -77,6 +77,7 @@ erase.addEventListener("click", eraseGrid);
 
 function eraseGrid (){
     gridBackgroundColor = "white";
+    opacityMode = false;
 }
 
 clear.addEventListener("click", clearGrid);
@@ -85,6 +86,8 @@ function clearGrid(){
     const gridBox = document.querySelectorAll(".grid-box");
     gridBox.forEach((box) => {
         box.style.backgroundColor = "";
+        box.style.opacity = "";        
+        box.dataset.passes = 0;
     });
 }
 
