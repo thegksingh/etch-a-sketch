@@ -2,7 +2,13 @@ const divContainer = document.querySelector(".grid-container");
 
 const resetGrid = document.querySelector(".reset-grid");
 
-let gridBackgroundColor ="#00ADB5";
+const selectedColor = document.querySelector(".color-picker")
+
+selectedColor.addEventListener("input", () =>{
+    gridBackgroundColor = event.target.value
+})
+
+let gridBackgroundColor = selectedColor.value;
 
 createGrid(16)
 
