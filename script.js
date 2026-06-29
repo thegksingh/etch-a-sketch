@@ -10,10 +10,16 @@ const selectedColor = document.querySelector(".color-picker");
 
 const opacity = document.querySelector(".opacity")
 
+const rbg = document.querySelector(".rgb");
+
 let opacityMode = false;
 
+let randomMode = false;
+
 selectedColor.addEventListener("input", (event) =>{
-    gridBackgroundColor = event.target.value
+    gridBackgroundColor = event.target.value;
+    randomMode = false;
+    opacityMode = false;
 })
 
 let gridBackgroundColor = selectedColor.value;
@@ -43,6 +49,11 @@ function createGrid(gridSize){
                 }
                 grid.style.backgroundColor = gridBackgroundColor;
                 grid.style.opacity = passes * 0.1;
+            } else if (randomMode === true){
+                let randomHex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+                grid.style.backgroundColor = randomHex;
+                grid.style.opacity = 1;
+
             } else {
                 grid.style.backgroundColor = gridBackgroundColor;
                 grid.style.opacity = 1;
@@ -78,6 +89,7 @@ erase.addEventListener("click", eraseGrid);
 function eraseGrid (){
     gridBackgroundColor = "white";
     opacityMode = false;
+    randomMode = false;
 }
 
 clear.addEventListener("click", clearGrid);
@@ -93,4 +105,10 @@ function clearGrid(){
 
 opacity.addEventListener("click", () => {
     opacityMode = true;
+    randomMode = false;
+});
+
+rbg.addEventListener("click", () => {
+    randomMode = true;
+    opacityMode = false;
 });
