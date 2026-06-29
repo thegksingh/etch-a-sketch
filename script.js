@@ -8,6 +8,10 @@ const clear = document.querySelector(".clear");
 
 const selectedColor = document.querySelector(".color-picker");
 
+const opacity = document.querySelector(".opacity")
+
+let opacityMode = false;
+
 selectedColor.addEventListener("input", (event) =>{
     gridBackgroundColor = event.target.value
 })
@@ -28,9 +32,24 @@ function createGrid(gridSize){
 
         grid.classList.add("grid-box");
 
+        grid.dataset.passes = 0;
+
         grid.addEventListener("mouseenter", () => {
-            grid.style.backgroundColor = gridBackgroundColor;
-        });
+            if (opacityMode === true){
+                let passes = Number(grid.dataset.passes);
+                if (passes < 10){
+                    passes++;
+                    grid.dataset.passes = passes;
+                }
+                grid.style.backgroundColor = gridBackgroundColor;
+                grid.style.opacity = passes * 0.1;
+            } else {
+                grid.style.backgroundColor = gridBackgroundColor;
+                grid.style.opacity = 1;
+                grid.dataset.passes = 10;
+            }
+
+        })
 
         divContainer.appendChild(grid);
     }
@@ -68,3 +87,7 @@ function clearGrid(){
         box.style.backgroundColor = "";
     });
 }
+
+opacity.addEventListener("click", () => {
+    opacityMode = true;
+});
