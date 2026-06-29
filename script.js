@@ -2,8 +2,9 @@ const divContainer = document.querySelector(".grid-container");
 
 const resetGrid = document.querySelector(".reset-grid");
 
-const erase = document.querySelector(".erase")
+const erase = document.querySelector(".erase");
 
+const clear = document.querySelector(".clear");
 
 const selectedColor = document.querySelector(".color-picker");
 
@@ -57,4 +58,13 @@ erase.addEventListener("click", eraseGrid);
 
 function eraseGrid (){
     gridBackgroundColor = "white";
+}
+
+clear.addEventListener("click", clearGrid);
+
+function clearGrid(){
+    const gridBox = document.querySelectorAll(".grid-box");
+    gridBox.forEach((box) => {
+        box.style.backgroundColor = "";
+    });
 }
