@@ -27,7 +27,7 @@ body h1{
     flex-direction: row;
     gap: 30px;
 }
-.botton-section{
+.bottom-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,6 +51,7 @@ body h1{
     display: flex;         
     justify-content: center;
 }
+
 
 .color-picker {
     display: none; 
