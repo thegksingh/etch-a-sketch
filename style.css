@@ -52,6 +52,9 @@ body h1{
     justify-content: center;
 }
 
+.button:hover{
+    background-color: black;
+}
 
 .color-picker {
     display: none; 
